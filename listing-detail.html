@@ -234,13 +234,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   height: 260px;
-  background:
-    linear-gradient(135deg, rgba(86,89,186,0.08), rgba(86,89,186,0.02)),
-    repeating-linear-gradient(0deg, #f7f7fd, #f7f7fd 24px, #eff0fb 24px, #eff0fb 25px),
-    repeating-linear-gradient(90deg, #f7f7fd, #f7f7fd 24px, #eff0fb 24px, #eff0fb 25px);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text-mid);
-  font-size: 13px;
+  overflow: hidden;
+  background: #f7f7fd;
+}
+.map-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: auto;
 }
 
 .sidebar-sticky { position: sticky; top: 88px; }
@@ -491,7 +492,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
     <div class="section-card">
       <h2 class="section-title">Neighborhood & Access</h2>
-      <div class="map-box">Interactive map placeholder · Ubud Ridge zone</div>
+      <div class="map-box">
+        <iframe
+          title="Ubud Ridge location map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=115.262%2C-8.525%2C115.272%2C-8.505&layer=mapnik&marker=-8.515%2C115.267"
+        ></iframe>
+      </div>
       <div class="two-col" style="margin-top:12px;">
         <div class="metric-box"><div class="metric-big">10 min</div><div class="metric-label">to Ubud Center</div></div>
         <div class="metric-box"><div class="metric-big">42 min</div><div class="metric-label">to Ngurah Rai Airport</div></div>
