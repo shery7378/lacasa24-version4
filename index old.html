@@ -688,7 +688,7 @@ select.lc-sf-control { cursor: pointer; }
   width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round;
 }
-.lc-social-btn:hover { border-color: var(--brand-light); color: var(--brand-light); }
+.lc-social-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); color: #fff; }
 .lc-footer-col h4 {
   font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
   color: #fff; margin-bottom: 18px; font-weight: 500;
@@ -697,13 +697,21 @@ select.lc-sf-control { cursor: pointer; }
 .lc-footer-col li { margin-bottom: 11px; }
 .lc-footer-col a {
   font-size: 13px; color: #fff;
-  transition: color 0.18s; font-weight: 300;
+  transition: opacity 0.18s; font-weight: 300;
 }
-.lc-footer-col a:hover { color: #fff; }
+.lc-footer-col a:hover { opacity: 0.82; }
 .lc-footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
   display: flex; justify-content: space-between; align-items: center;
   font-size: 12px; color: #fff;
+}
+
+@media (max-width: 1024px){
+  .lc-footer-grid{ grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 600px){
+  .lc-footer-grid{ grid-template-columns: 1fr; gap: 28px; }
+  .lc-footer-bottom{ flex-direction: column; gap: 8px; text-align: center; }
 }
 
 /* ===================== ANIMATIONS ===================== */
@@ -1273,11 +1281,11 @@ select.lc-sf-control { cursor: pointer; }
       <div class="lc-footer-col">
         <h4>Platform</h4>
         <ul>
-          <li><a href="#">Find Property</a></li>
-          <li><a href="#">Sell Property</a></li>
-          <li><a href="#">Rent Out</a></li>
-          <li><a href="#">Evaluate</a></li>
-          <li><a href="#">Map Search</a></li>
+          <li><a href="listings.html">Find Property</a></li>
+          <li><a href="sell-rent.html">Sell</a></li>
+          <li><a href="rent.html">Rent</a></li>
+          <li><a href="evaluate.html">Evaluate</a></li>
+          <li><a href="overview.html">Overview</a></li>
         </ul>
       </div>
       <div class="lc-footer-col">
@@ -1293,7 +1301,7 @@ select.lc-sf-control { cursor: pointer; }
       <div class="lc-footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li><a href="overview.html">About Us</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="#">Press</a></li>
           <li><a href="#">Careers</a></li>
@@ -1302,7 +1310,7 @@ select.lc-sf-control { cursor: pointer; }
       </div>
     </div>
     <div class="lc-footer-bottom">
-      <span>© 2025 lacasa24 Inc. All rights reserved.</span>
+      <span>&copy; 2025 lacasa24 Inc. All rights reserved.</span>
       <span>Settle beyond borders.</span>
     </div>
   </div>
