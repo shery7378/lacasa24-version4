@@ -9,7 +9,7 @@
 <style>
 /* ===================== RESET & BASE ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 body {
   font-family: 'Outfit', sans-serif;
   background: #ffffff;
@@ -17,8 +17,6 @@ body {
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  width: 100%;
 }
 
 /* ===================== VARIABLES ===================== */
@@ -135,7 +133,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .lc-hero {
   background: var(--brand);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 100px 0 0;
 }
 .lc-hero::before {
@@ -228,7 +226,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   margin-top: 48px;
   position: relative;
   z-index: 120;
-  width: 100%;
 }
 .lc-search-bar {
   background: var(--white);
@@ -700,162 +697,6 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
 .lc-hero h1 { animation-delay: 0.15s; }
 .lc-hero-sub { animation-delay: 0.25s; }
 .lc-hero-tabs { animation-delay: 0.35s; }
-
-/* ===================== HAMBURGER ===================== */
-.lc-hamburger {
-  display: none;
-  flex-direction: column; justify-content: center; align-items: center;
-  gap: 5px; width: 40px; height: 40px;
-  background: transparent; border: none; cursor: pointer; padding: 4px;
-  border-radius: var(--radius-sm);
-  transition: background 0.18s;
-}
-.lc-hamburger:hover { background: var(--brand-pale); }
-.lc-hamburger span {
-  display: block; width: 22px; height: 2px;
-  background: var(--text-dark); border-radius: 2px;
-  transition: all 0.25s ease;
-  transform-origin: center;
-}
-.lc-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.lc-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.lc-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* MOBILE MENU */
-.lc-mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  border-top: 1px solid var(--border);
-  padding: 20px 24px 28px;
-  gap: 0;
-}
-.lc-mobile-menu.open { display: flex; }
-.lc-mobile-links { list-style: none; margin-bottom: 20px; }
-.lc-mobile-links li { border-bottom: 1px solid var(--border); }
-.lc-mobile-links a {
-  display: block; padding: 14px 0;
-  font-size: 15px; color: var(--text-mid); font-weight: 400;
-  transition: color 0.18s;
-}
-.lc-mobile-links a:hover { color: var(--brand); }
-.lc-mobile-actions { display: flex; gap: 10px; }
-.lc-mobile-actions .btn { flex: 1; justify-content: center; }
-
-/* ===================== RESPONSIVE ===================== */
-
-/* --- Tablet (≤ 1024px) --- */
-@media (max-width: 1024px) {
-  .container { padding: 0 28px; }
-  .lc-hero-inner { gap: 36px; }
-  .lc-hero h1 { font-size: clamp(38px, 5vw, 60px); }
-  .lc-mosaic {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 260px 220px;
-  }
-  .lc-locations { grid-template-columns: repeat(2, 1fr); }
-  .lc-loc:first-child { grid-column: span 2; }
-  .lc-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-}
-
-/* --- Small Tablet (≤ 860px) --- */
-@media (max-width: 860px) {
-  .lc-nav-links, .lc-nav-actions { display: none; }
-  .lc-hamburger { display: flex; }
-
-  .container { padding: 0 20px; }
-  .lc-hero { padding: 72px 0 0; }
-  .lc-hero-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    align-items: flex-start;
-  }
-  .lc-hero-content { padding-bottom: 0; }
-  .lc-hero-sub { max-width: 100%; }
-  .lc-hero-images {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 180px 150px;
-    width: 100%;
-  }
-  .lc-search-wrap { padding: 24px 20px 0; }
-  .lc-search-bar {
-    flex-direction: column;
-    border-radius: var(--radius-md);
-    width: 100%;
-  }
-  .lc-sf {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 14px 18px;
-    width: 100%;
-  }
-  .lc-sf:last-of-type { border-bottom: none; }
-  .lc-search-btn {
-    width: 100%; padding: 16px;
-    font-size: 18px; border-radius: 0 0 var(--radius-md) var(--radius-md);
-  }
-  .lc-stats-inner { flex-wrap: wrap; }
-  .lc-stat { flex: 1 1 33%; border-bottom: 1px solid var(--border); }
-  .lc-stat:nth-child(3) { border-right: none; }
-  .lc-stat:nth-child(4), .lc-stat:nth-child(5) { border-bottom: none; }
-  .lc-mosaic {
-    grid-template-columns: 1fr;
-    grid-template-rows: 300px 220px 220px;
-  }
-  .lc-mc:first-child { grid-row: span 1; }
-  .lc-services { grid-template-columns: 1fr 1fr; }
-  .lc-testi-grid { grid-template-columns: 1fr 1fr; }
-  .lc-agents { grid-template-columns: 1fr 1fr; }
-  .lc-cta { flex-direction: column; padding: 48px 36px; gap: 28px; text-align: center; }
-  .lc-cta-actions { justify-content: center; }
-  .lc-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .lc-section { padding: 60px 0; }
-  .lc-section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-}
-
-/* --- Mobile (≤ 600px) --- */
-@media (max-width: 600px) {
-  .container { padding: 0 16px; }
-  .lc-hero { padding: 60px 0 0; }
-  .lc-hero h1 { font-size: clamp(34px, 9vw, 48px); }
-  .lc-hero-images {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 140px 120px;
-    gap: 8px;
-    width: 100%;
-  }
-  .lc-hi-label { font-size: 10px; padding: 4px 8px; }
-  .lc-hero-tabs { flex-wrap: wrap; gap: 8px; }
-  .lc-htab { padding: 8px 16px; font-size: 12px; }
-  .lc-search-wrap { padding: 20px 16px 0; margin-top: 32px; }
-  .lc-stats-inner { flex-wrap: wrap; }
-  .lc-stat { flex: 1 1 50%; }
-  .lc-stat:nth-child(odd) { border-right: 1px solid var(--border); }
-  .lc-stat:nth-child(3) { border-right: 1px solid var(--border); }
-  .lc-stat:last-child { flex: 1 1 100%; border-right: none; border-bottom: none; }
-  .lc-mosaic {
-    grid-template-columns: 1fr;
-    grid-template-rows: 260px 200px 200px;
-  }
-  .lc-grid { grid-template-columns: 1fr; }
-  .lc-locations { grid-template-columns: 1fr; }
-  .lc-loc:first-child { grid-column: span 1; }
-  .lc-services { grid-template-columns: 1fr; }
-  .lc-testi-grid { grid-template-columns: 1fr; }
-  .lc-agents { grid-template-columns: 1fr; }
-  .lc-cta { padding: 40px 24px; }
-  .lc-cta-actions { flex-direction: column; }
-  .lc-cta-actions .btn { width: 100%; justify-content: center; }
-  .lc-footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .lc-footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-  .lc-section { padding: 48px 0; }
-  .lc-stat-num { font-size: 28px; }
-  .lc-mc:first-child .lc-mc-title { font-size: 22px; }
-  .section-title { font-size: clamp(24px, 6vw, 34px); }
-  .lc-card-meta { flex-wrap: wrap; gap: 8px; }
-  .lc-hi:first-child { grid-row: span 2; }
-  .btn { white-space: normal; text-align: center; }
-}
 </style>
 </head>
 <body>
@@ -878,23 +719,6 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
         <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Log in</button>
         <button class="btn btn-primary btn-sm" onclick="window.location.href='list-property.html'">List Property</button>
       </div>
-      <button class="lc-hamburger" aria-label="Open menu" onclick="toggleMobileMenu(this)">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-  <!-- MOBILE MENU -->
-  <div class="lc-mobile-menu" id="lc-mobile-menu">
-    <ul class="lc-mobile-links">
-      <li><a href="listings.html">Find Property</a></li>
-      <li><a href="sell-rent.html">Sell</a></li>
-      <li><a href="rent.html">Rent</a></li>
-      <li><a href="evaluate.html">Evaluate Property</a></li>
-      <li><a href="overview.html">Overview</a></li>
-    </ul>
-    <div class="lc-mobile-actions">
-      <button class="btn btn-outline" onclick="window.location.href='login.html'">Log in</button>
-      <button class="btn btn-primary" onclick="window.location.href='list-property.html'">List Property</button>
     </div>
   </div>
 </nav>
@@ -1500,20 +1324,6 @@ document.querySelectorAll('.lc-mosaic .lc-mc').forEach(card => {
   }
 });
 initSearchDropdowns();
-
-function toggleMobileMenu(btn) {
-  btn.classList.toggle('open');
-  const menu = document.getElementById('lc-mobile-menu');
-  menu.classList.toggle('open');
-}
-
-// Close mobile menu on resize to desktop
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 860) {
-    document.getElementById('lc-mobile-menu').classList.remove('open');
-    document.querySelector('.lc-hamburger')?.classList.remove('open');
-  }
-});
 </script>
 </body>
 </html>
