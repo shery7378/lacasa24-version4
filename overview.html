@@ -111,18 +111,50 @@ input[type="date"].lc-sf-control{color-scheme:light;cursor:pointer}
 .lc-footer-tagline{font-size:12px;color:rgba(255,255,255,.4);font-weight:300;margin-bottom:28px}
 .lc-footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.3)}
 
+/* ===================== HAMBURGER ===================== */
+.lc-hamburger {
+  display: none; flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: transparent; border: none;
+  cursor: pointer; padding: 4px; border-radius: var(--radius-sm); transition: background 0.18s;
+}
+.lc-hamburger:hover { background: var(--brand-pale); }
+.lc-hamburger span {
+  display: block; width: 22px; height: 2px; background: var(--text-dark);
+  border-radius: 2px; transition: all 0.25s ease; transform-origin: center;
+}
+.lc-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.lc-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.lc-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.lc-mobile-menu {
+  display: none; flex-direction: column; background: #fff;
+  border-top: 1px solid var(--border); padding: 20px 24px 28px; gap: 0;
+}
+.lc-mobile-menu.open { display: flex; }
+.lc-mobile-links { list-style: none; margin-bottom: 20px; }
+.lc-mobile-links li { border-bottom: 1px solid var(--border); }
+.lc-mobile-links a {
+  display: block; padding: 14px 0; font-size: 15px; color: var(--text-mid);
+  font-weight: 400; transition: color 0.18s;
+}
+.lc-mobile-links a:hover { color: var(--brand); }
+.lc-mobile-actions { display: flex; gap: 10px; }
+.lc-mobile-actions .btn { flex: 1; justify-content: center; }
+
 @media (max-width:900px){
   .lc-search-bar{flex-wrap:wrap}
   .lc-sf{min-width:50%;border-right:1px solid var(--border)}
   .lc-sf:nth-child(even){border-right:none}
   .lc-search-btn{width:100%;padding:12px 0;font-size:18px}
+  .section-head{flex-direction:column;align-items:flex-start;gap:10px}
 }
 @media (max-width:720px){
   .container{padding:0 20px}
   .lc-nav-links,.lc-nav-actions{display:none}
+  .lc-hamburger{display:flex}
   .lc-search-wrap{padding:18px 18px 0}
   .lc-sf{min-width:100%;border-right:none;border-bottom:1px solid var(--border)}
   .lc-sf:last-of-type{border-bottom:none}
+  .lc-footer-bottom{flex-direction:column;gap:8px;text-align:center}
 }
 </style>
 </head>
@@ -142,6 +174,22 @@ input[type="date"].lc-sf-control{color-scheme:light;cursor:pointer}
         <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Log in</button>
         <button class="btn btn-primary btn-sm" onclick="window.location.href='list-property.html'">List Property</button>
       </div>
+      <button class="lc-hamburger" aria-label="Open menu" onclick="toggleMobileMenu(this)">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="lc-mobile-menu" id="lc-mobile-menu">
+    <ul class="lc-mobile-links">
+      <li><a href="listings.html">Find Property</a></li>
+      <li><a href="sell-rent.html">Sell</a></li>
+      <li><a href="rent.html">Rent</a></li>
+      <li><a href="evaluate.html">Evaluate Property</a></li>
+      <li><a href="overview.html">Overview</a></li>
+    </ul>
+    <div class="lc-mobile-actions">
+      <button class="btn btn-outline" onclick="window.location.href='login.html'">Log in</button>
+      <button class="btn btn-primary" onclick="window.location.href='list-property.html'">List Property</button>
     </div>
   </div>
 </nav>
@@ -254,6 +302,10 @@ input[type="date"].lc-sf-control{color-scheme:light;cursor:pointer}
 </footer>
 
 <script>
+function toggleMobileMenu(btn) {
+  btn.classList.toggle('open');
+  document.getElementById('lc-mobile-menu').classList.toggle('open');
+}
 const slider = document.getElementById('featured-slider');
 document.getElementById('slide-left').addEventListener('click', () => {
   slider.scrollBy({ left: -340, behavior: 'smooth' });

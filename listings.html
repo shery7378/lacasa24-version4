@@ -666,6 +666,154 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
 .lc-footer-logo { width: fit-content; margin-bottom: 8px; }
 .lc-footer-logo img { width: auto; height: 28px; display: block; }
 .lc-footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 300; }
+
+/* ===================== HAMBURGER ===================== */
+.lc-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px;
+  background: transparent; border: none; cursor: pointer; padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: background 0.18s;
+}
+.lc-hamburger:hover { background: var(--brand-pale); }
+.lc-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text-dark); border-radius: 2px;
+  transition: all 0.25s ease;
+  transform-origin: center;
+}
+.lc-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.lc-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.lc-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* MOBILE MENU */
+.lc-mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  padding: 20px 24px 28px;
+  gap: 0;
+}
+.lc-mobile-menu.open { display: flex; }
+.lc-mobile-links { list-style: none; margin-bottom: 20px; }
+.lc-mobile-links li { border-bottom: 1px solid var(--border); }
+.lc-mobile-links a {
+  display: block; padding: 14px 0;
+  font-size: 15px; color: var(--text-mid); font-weight: 400;
+  transition: color 0.18s;
+}
+.lc-mobile-links a:hover { color: var(--brand); }
+.lc-mobile-actions { display: flex; gap: 10px; }
+.lc-mobile-actions .btn { flex: 1; justify-content: center; }
+
+/* MOBILE FILTER TOGGLE */
+.mobile-filter-btn {
+  display: none;
+  width: 100%; padding: 12px 18px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--off-white); color: var(--text-mid);
+  font-size: 13px; font-weight: 500; font-family: var(--ff-sans);
+  cursor: pointer; margin-bottom: 16px;
+  align-items: center; justify-content: center; gap: 8px;
+  transition: border-color 0.18s, color 0.18s;
+}
+.mobile-filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+
+/* SIDEBAR OVERLAY */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(18,18,42,0.5); z-index: 999;
+}
+.sidebar-overlay.open { display: block; }
+
+/* ===================== RESPONSIVE ===================== */
+
+/* --- Tablet (≤ 1024px) --- */
+@media (max-width: 1024px) {
+  .container { padding: 0 28px; }
+  .listings-layout { grid-template-columns: 240px 1fr; gap: 24px; }
+}
+
+/* --- Small Tablet (≤ 860px) --- */
+@media (max-width: 860px) {
+  .lc-nav-links, .lc-nav-actions { display: none; }
+  .lc-hamburger { display: flex; }
+
+  .container { padding: 0 20px; }
+  .page-header { padding: 32px 0 0; }
+  .page-header-top { flex-direction: column; gap: 16px; }
+
+  .lc-search-wrap { padding: 20px 16px 0; }
+  .lc-search-bar {
+    flex-direction: column;
+    border-radius: var(--radius-md);
+  }
+  .lc-sf {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+  .lc-sf:last-of-type { border-bottom: none; }
+  .lc-search-btn {
+    width: 100%; padding: 14px;
+    font-size: 14px; border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .active-filters { gap: 6px; }
+
+  .listings-layout { grid-template-columns: 1fr; gap: 20px; }
+
+  .mobile-filter-btn { display: flex; }
+
+  .sidebar {
+    display: none;
+    position: fixed; top: 0; left: 0;
+    width: 300px; height: 100vh;
+    z-index: 1000; background: #fff;
+    overflow-y: auto;
+    box-shadow: 4px 0 24px rgba(18,18,42,0.18);
+    padding-bottom: 20px;
+  }
+  .sidebar.open { display: block; }
+
+  .lc-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+  .lc-grid.list-view .lc-card { flex-direction: column; }
+  .lc-grid.list-view .lc-card-img-wrap { width: 100%; height: 200px; }
+  .lc-grid.list-view .lc-card-title { font-size: 18px; }
+
+  .featured-banner { flex-direction: column; text-align: center; gap: 12px; }
+
+  .listings-toolbar { flex-direction: column; gap: 10px; align-items: flex-start; }
+
+  .lc-footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+/* --- Mobile (≤ 600px) --- */
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+  .page-header { padding: 24px 0 0; }
+  .page-title { font-size: clamp(28px, 7vw, 42px); }
+
+  .lc-search-wrap { padding: 16px 12px 0; margin-top: 20px; }
+
+  .lc-grid { grid-template-columns: 1fr; }
+
+  .pagination { gap: 4px; }
+  .page-btn { width: 34px; height: 34px; font-size: 12px; }
+
+  .filter-chip { font-size: 11px; padding: 4px 10px; }
+
+  .sidebar { width: 85vw; max-width: 300px; }
+
+  .view-toggle { display: none; }
+
+  .btn { white-space: normal; text-align: center; }
+
+  .lc-footer { padding: 32px 0 20px; }
+}
 </style>
 </head>
 <body>
@@ -688,6 +836,23 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
         <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Log in</button>
         <button class="btn btn-primary btn-sm" onclick="window.location.href='list-property.html'">List Property</button>
       </div>
+      <button class="lc-hamburger" aria-label="Open menu" onclick="toggleMobileMenu(this)">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <!-- MOBILE MENU -->
+  <div class="lc-mobile-menu" id="lc-mobile-menu">
+    <ul class="lc-mobile-links">
+      <li><a href="listings.html">Find Property</a></li>
+      <li><a href="sell-rent.html">Sell</a></li>
+      <li><a href="rent.html">Rent</a></li>
+      <li><a href="evaluate.html">Evaluate Property</a></li>
+      <li><a href="overview.html">Overview</a></li>
+    </ul>
+    <div class="lc-mobile-actions">
+      <button class="btn btn-outline" onclick="window.location.href='login.html'">Log in</button>
+      <button class="btn btn-primary" onclick="window.location.href='list-property.html'">List Property</button>
     </div>
   </div>
 </nav>
@@ -786,8 +951,17 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
 <div class="container">
   <div class="listings-layout">
 
+    <!-- MOBILE FILTER BUTTON -->
+    <button class="mobile-filter-btn" onclick="toggleMobileFilter()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M3 7h8M5 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Filter Results
+    </button>
+
+    <!-- SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMobileFilter()"></div>
+
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="listings-sidebar">
       <div class="sidebar-card">
         <div class="sidebar-head">
           <div class="sidebar-head-title">
@@ -1548,6 +1722,33 @@ document.querySelectorAll('.sidebar-card .price-input').forEach(input => {
 updateRangeFill(1000, 8000);
 syncBudgetValues();
 initSearchDropdowns();
+
+/* Mobile menu */
+function toggleMobileMenu(btn) {
+  btn.classList.toggle('open');
+  document.getElementById('lc-mobile-menu').classList.toggle('open');
+}
+
+/* Mobile filter sidebar */
+function toggleMobileFilter() {
+  const sidebar = document.getElementById('listings-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+  document.body.style.overflow = !isOpen ? 'hidden' : '';
+}
+
+/* Close mobile UI on resize to desktop */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 860) {
+    document.getElementById('listings-sidebar')?.classList.remove('open');
+    document.getElementById('sidebar-overlay')?.classList.remove('open');
+    document.getElementById('lc-mobile-menu')?.classList.remove('open');
+    document.querySelector('.lc-hamburger')?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 </script>
 </body>
 </html>
