@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>lacasa24 — Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;background:#fff;color:#1a1a2e;font-size:15px;line-height:1.6}
+:root{
+  --brand:#5659ba;--brand-dark:#3e41a0;--brand-pale:#eeeeff;--brand-soft:#f4f4ff;
+  --off-white:#f8f8fc;--text-dark:#12122a;--text-mid:#4a4a6a;--text-muted:#8888aa;
+  --border:#e0e0f0;--shadow-sm:0 2px 12px rgba(86,89,186,.08);--shadow-lg:0 20px 60px rgba(86,89,186,.16);
+  --radius-sm:8px;--radius-lg:18px;--radius-xl:24px;--ff-serif:'Cormorant Garamond',Georgia,serif;
+}
+a{text-decoration:none;color:inherit} img{display:block;width:100%;height:100%;object-fit:cover}
+.container{max-width:1180px;margin:0 auto;padding:0 40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;border:none;cursor:pointer}
+.btn-primary{background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-dark)}
+.btn-outline{background:#fff;border:1.5px solid var(--brand);color:var(--brand)}.btn-outline:hover{background:var(--brand-pale)}
+.btn-sm{padding:9px 18px;font-size:13px}
+
+.lc-nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}
+.lc-nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.lc-logo{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:none;border-radius:0;padding:0;box-shadow:none}
+.lc-logo img{width:auto;height:30px;filter:drop-shadow(0 1px 1px rgba(62,65,160,.25))}
+.lc-nav-links{display:flex;gap:36px;list-style:none}
+.lc-nav-links a{font-size:13px;color:var(--text-mid);letter-spacing:.04em;position:relative;padding-bottom:2px;transition:color .18s}
+.lc-nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--brand);transition:width .22s ease}
+.lc-nav-links a:hover{color:var(--brand)}
+.lc-nav-links a:hover::after{width:100%}
+.lc-nav-actions{display:flex;gap:10px;align-items:center}
+
+.hero{background:linear-gradient(180deg,var(--off-white) 0,#fff 100%);padding:56px 0 0}
+.hero h1{font-family:var(--ff-serif);font-size:clamp(38px,5vw,62px);line-height:1.05;color:var(--text-dark)}
+.hero h1 em{color:var(--brand);font-style:italic}
+.hero p{margin-top:10px;max-width:740px;color:var(--text-mid)}
+.lc-search-wrap{background:#fff;border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:28px 40px 0;margin-top:32px;position:relative;z-index:120}
+.lc-search-bar{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);
+  display:flex;align-items:stretch;overflow:visible;box-shadow:var(--shadow-lg);transition:box-shadow .2s;position:relative;z-index:121;
+}
+.lc-search-bar:focus-within{box-shadow:0 20px 60px rgba(86,89,186,.22)}
+.lc-sf{
+  flex:1;padding:16px 22px;border-right:1px solid var(--border);
+  transition:background .18s;position:relative;
+}
+.lc-sf:hover{background:var(--brand-soft)}
+.lc-sf-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--brand);font-weight:600;margin-bottom:3px}
+.lc-sf-value{font-size:13px;color:var(--text-mid);font-weight:400}
+.lc-sf-control{width:100%;border:none;outline:none;background:transparent;font-family:'Outfit',sans-serif;font-size:13px;color:var(--text-mid)}
+.lc-sf-control::placeholder{color:var(--text-muted)}
+select.lc-sf-control{cursor:pointer}
+input[type="date"].lc-sf-control{color-scheme:light;cursor:pointer}
+.lc-dropdown{position:relative;z-index:1}
+.lc-dd-trigger{width:100%;border:none;background:transparent;text-align:left;padding:0;font-family:'Outfit',sans-serif;font-size:13px;color:var(--text-mid);cursor:pointer}
+.lc-dd-search{width:100%;border:none;outline:none;background:transparent;font-family:'Outfit',sans-serif;font-size:13px;color:var(--text-mid)}
+.lc-dd-search::placeholder{color:var(--text-muted)}
+.lc-dd-menu{position:absolute;top:100%;margin-top:8px;left:0;right:0;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 32px rgba(86,89,186,.12);padding:6px;max-height:230px;overflow-y:auto;z-index:2;display:none}
+.lc-dropdown.open{z-index:1400}
+.lc-dropdown.open .lc-dd-menu{display:block}
+.lc-dd-item{width:100%;border:none;background:transparent;text-align:left;padding:10px;border-radius:8px;font-size:13px;color:var(--text-mid);cursor:pointer}
+.lc-dd-item:hover{background:var(--brand-soft);color:var(--brand)}
+.lc-search-btn{
+  background:var(--brand);border:none;color:#fff;padding:0 28px;cursor:pointer;
+  transition:background .18s;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-size:22px;
+}
+.lc-search-btn:hover{background:var(--brand-dark)}
+
+.section{padding:46px 0 80px}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}
+.section-title{font-family:var(--ff-serif);font-size:40px;color:var(--text-dark);line-height:1.05}
+.slider-actions{display:flex;gap:8px}
+.slide-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:18px;color:var(--text-mid)}
+.slide-btn:hover{border-color:var(--brand);color:var(--brand)}
+
+.slider-wrap{position:relative}
+.slider{
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:14px;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;
+}
+.slider::-webkit-scrollbar{height:8px}.slider::-webkit-scrollbar-thumb{background:#d8d9ef;border-radius:999px}
+.card{scroll-snap-align:start;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm)}
+.card-img{height:210px;position:relative}
+.badge{position:absolute;top:12px;left:12px;background:var(--brand);color:#fff;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.ov-fav-btn{
+  position:absolute;top:12px;right:12px;z-index:3;
+  min-width:40px;height:34px;border-radius:999px;padding:0 10px;
+  border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.25);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:14px;backdrop-filter:blur(8px);
+  box-shadow:0 8px 20px rgba(18,18,42,.2);transition:all .2s ease;
+}
+.ov-fav-btn:hover{background:rgba(255,255,255,.35);transform:translateY(-1px)}
+.ov-fav-btn.liked{color:#ff5a70;background:rgba(255,255,255,.95);border-color:rgba(255,255,255,.95)}
+.card-body{padding:14px}
+.loc{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--brand);margin-bottom:4px}
+.title{font-family:var(--ff-serif);font-size:22px;color:var(--text-dark);line-height:1.1;margin-bottom:8px}
+.meta{display:flex;gap:10px;font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:10px}
+.price{font-family:var(--ff-serif);font-size:24px;color:var(--brand)}
+.price small{font-family:'Outfit',sans-serif;font-size:12px;color:var(--text-muted)}
+.rating{font-size:12px;color:var(--text-muted)}
+
+.lc-footer{background:var(--text-dark);padding:48px 0 28px}
+.lc-footer-logo{font-family:var(--ff-serif);font-size:20px;color:#7b7ece;margin-bottom:8px}
+.lc-footer-tagline{font-size:12px;color:rgba(255,255,255,.4);font-weight:300;margin-bottom:28px}
+.lc-footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media (max-width:900px){
+  .lc-search-bar{flex-wrap:wrap}
+  .lc-sf{min-width:50%;border-right:1px solid var(--border)}
+  .lc-sf:nth-child(even){border-right:none}
+  .lc-search-btn{width:100%;padding:12px 0;font-size:18px}
+}
+@media (max-width:720px){
+  .container{padding:0 20px}
+  .lc-nav-links,.lc-nav-actions{display:none}
+  .lc-search-wrap{padding:18px 18px 0}
+  .lc-sf{min-width:100%;border-right:none;border-bottom:1px solid var(--border)}
+  .lc-sf:last-of-type{border-bottom:none}
+}
+</style>
+</head>
+<body>
+<nav class="lc-nav">
+  <div class="container">
+    <div class="lc-nav-inner">
+      <a href="index.html" class="lc-logo" aria-label="lacasa24 home"><img src="logo.svg" alt="lacasa24" /></a>
+      <ul class="lc-nav-links">
+        <li><a href="listings.html">Find Property</a></li>
+        <li><a href="sell-rent.html">Sell</a></li>
+        <li><a href="rent.html">Rent</a></li>
+        <li><a href="evaluate.html">Evaluate Property</a></li>
+        <li><a href="overview.html">Overview</a></li>
+      </ul>
+      <div class="lc-nav-actions">
+        <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Log in</button>
+        <button class="btn btn-primary btn-sm" onclick="window.location.href='list-property.html'">List Property</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <h1>Explore our featured <em>overview</em></h1>
+    <p>Browse handpicked international homes with verified details, premium locations, and fast access to local advisors.</p>
+    <div class="lc-search-wrap">
+      <div class="lc-search-bar">
+        <div class="lc-sf">
+          <div class="lc-sf-label">Destination</div>
+          <div class="lc-dropdown" data-dropdown>
+            <input class="lc-dd-search" type="text" data-dd-search placeholder="Search country..." value="Portugal" />
+            <div class="lc-dd-menu">
+              <button type="button" class="lc-dd-item">Portugal</button>
+              <button type="button" class="lc-dd-item">Spain</button>
+              <button type="button" class="lc-dd-item">France</button>
+              <button type="button" class="lc-dd-item">Italy</button>
+              <button type="button" class="lc-dd-item">Greece</button>
+              <button type="button" class="lc-dd-item">Croatia</button>
+              <button type="button" class="lc-dd-item">United Arab Emirates</button>
+              <button type="button" class="lc-dd-item">Thailand</button>
+              <button type="button" class="lc-dd-item">Indonesia</button>
+              <button type="button" class="lc-dd-item">Turkey</button>
+            </div>
+          </div>
+        </div>
+        <div class="lc-sf">
+          <div class="lc-sf-label">Type</div>
+          <div class="lc-dropdown" data-dropdown>
+            <button type="button" class="lc-dd-trigger" data-dd-trigger>Rent</button>
+            <div class="lc-dd-menu">
+              <button type="button" class="lc-dd-item">Rent</button>
+              <button type="button" class="lc-dd-item">Sell</button>
+              <button type="button" class="lc-dd-item">Buy</button>
+              <button type="button" class="lc-dd-item">Mortgage</button>
+            </div>
+          </div>
+        </div>
+        <div class="lc-sf">
+          <div class="lc-sf-label">Budget</div>
+          <div class="lc-sf-value">€ 1,000 – € 8,000</div>
+        </div>
+        <div class="lc-sf">
+          <div class="lc-sf-label">Rooms</div>
+          <div class="lc-dropdown" data-dropdown>
+            <input class="lc-dd-search" type="text" data-dd-search placeholder="Type or select rooms" value="2 rooms" />
+            <div class="lc-dd-menu">
+              <button type="button" class="lc-dd-item">1 room</button>
+              <button type="button" class="lc-dd-item">2 rooms</button>
+              <button type="button" class="lc-dd-item">3 rooms</button>
+              <button type="button" class="lc-dd-item">4 rooms</button>
+              <button type="button" class="lc-dd-item">5 rooms</button>
+            </div>
+          </div>
+        </div>
+        <div class="lc-sf" style="border-right:none;flex:0.7;">
+          <div class="lc-sf-label">Move in</div>
+          <input class="lc-sf-control" type="date" />
+        </div>
+        <button class="lc-search-btn">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Featured properties</h2>
+      <div class="slider-actions">
+        <button class="slide-btn" id="slide-left" aria-label="Previous">‹</button>
+        <button class="slide-btn" id="slide-right" aria-label="Next">›</button>
+      </div>
+    </div>
+    <div class="slider-wrap">
+      <div class="slider" id="featured-slider">
+        <a class="card" href="listing-detail.html">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=80" alt="Bali villa"><div class="badge">For Rent</div></div>
+          <div class="card-body"><div class="loc">Bali, Indonesia</div><div class="title">Private Hillside Villa</div><div class="meta"><span>5 rooms</span><span>136 m²</span></div><div class="row"><div class="price">€ 5,900 <small>/ mo</small></div><div class="rating">★ 4.97</div></div></div>
+        </a>
+        <a class="card" href="listing-detail.html">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=80" alt="Dubai penthouse"><div class="badge">For Sale</div></div>
+          <div class="card-body"><div class="loc">Dubai, UAE</div><div class="title">Skyline Penthouse Suite</div><div class="meta"><span>4 rooms</span><span>180 m²</span></div><div class="row"><div class="price">€ 5,400 <small>/ mo</small></div><div class="rating">★ 4.93</div></div></div>
+        </a>
+        <a class="card" href="listing-detail.html">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80" alt="Lisbon loft"><div class="badge">For Rent</div></div>
+          <div class="card-body"><div class="loc">Lisbon, Portugal</div><div class="title">Loft in the Old Town</div><div class="meta"><span>3 rooms</span><span>72 m²</span></div><div class="row"><div class="price">€ 4,200 <small>/ mo</small></div><div class="rating">★ 4.88</div></div></div>
+        </a>
+        <a class="card" href="listing-detail.html">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=900&q=80" alt="Split house"><div class="badge">For Rent</div></div>
+          <div class="card-body"><div class="loc">Split, Croatia</div><div class="title">Sea Breeze Family House</div><div class="meta"><span>4 rooms</span><span>112 m²</span></div><div class="row"><div class="price">€ 4,600 <small>/ mo</small></div><div class="rating">★ 4.95</div></div></div>
+        </a>
+        <a class="card" href="listing-detail.html">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80" alt="Mallorca finca"><div class="badge">For Rent</div></div>
+          <div class="card-body"><div class="loc">Mallorca, Spain</div><div class="title">Seafront Finca with Pool</div><div class="meta"><span>5 rooms</span><span>165 m²</span></div><div class="row"><div class="price">€ 7,400 <small>/ mo</small></div><div class="rating">★ 4.96</div></div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="lc-footer">
+  <div class="container">
+    <div class="lc-footer-logo">lacasa24</div>
+    <div class="lc-footer-tagline">Your trusted partner for international property.</div>
+    <div class="lc-footer-bottom"><span>© 2025 lacasa24 Inc. All rights reserved.</span><span>Settle beyond borders.</span></div>
+  </div>
+</footer>
+
+<script>
+const slider = document.getElementById('featured-slider');
+document.getElementById('slide-left').addEventListener('click', () => {
+  slider.scrollBy({ left: -340, behavior: 'smooth' });
+});
+document.getElementById('slide-right').addEventListener('click', () => {
+  slider.scrollBy({ left: 340, behavior: 'smooth' });
+});
+
+function toggleOverviewFav(btn, e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const liked = btn.classList.toggle('liked');
+  btn.textContent = liked ? '♥' : '♡';
+}
+
+function initSearchDropdowns() {
+  const dropdowns = document.querySelectorAll('[data-dropdown]');
+
+  const closeAll = (except) => {
+    dropdowns.forEach(dd => {
+      if (dd !== except) dd.classList.remove('open');
+    });
+  };
+
+  dropdowns.forEach(dd => {
+    const trigger = dd.querySelector('[data-dd-trigger]');
+    const search = dd.querySelector('[data-dd-search]');
+    const items = dd.querySelectorAll('.lc-dd-item');
+
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dd.classList.contains('open');
+        closeAll(dd);
+        dd.classList.toggle('open', !isOpen);
+      });
+    }
+
+    if (search) {
+      search.addEventListener('focus', () => {
+        closeAll(dd);
+        dd.classList.add('open');
+      });
+      search.addEventListener('click', (e) => e.stopPropagation());
+      search.addEventListener('input', () => {
+        const q = search.value.trim().toLowerCase();
+        dd.classList.add('open');
+        items.forEach(item => {
+          item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    }
+
+    items.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (search) search.value = item.textContent.trim();
+        if (trigger) trigger.textContent = item.textContent.trim();
+        dd.classList.remove('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', () => closeAll());
+}
+
+initSearchDropdowns();
+
+document.querySelectorAll('.card .card-img').forEach(imgWrap => {
+  if (imgWrap.querySelector('.ov-fav-btn')) return;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'ov-fav-btn';
+  btn.textContent = '♡';
+  btn.setAttribute('aria-label', 'Add to favorites');
+  btn.addEventListener('click', (e) => toggleOverviewFav(btn, e));
+  imgWrap.appendChild(btn);
+});
+</script>
+</body>
+</html>

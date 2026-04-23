@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>lacasa24 — Property Details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #ffffff;
+  color: #1a1a2e;
+  font-size: 15px;
+  line-height: 1.6;
+}
+:root {
+  --brand: #5659ba;
+  --brand-dark: #3e41a0;
+  --brand-light: #7b7ece;
+  --brand-pale: #eeeeff;
+  --brand-soft: #f4f4ff;
+  --white: #ffffff;
+  --off-white: #f8f8fc;
+  --text-dark: #12122a;
+  --text-mid: #4a4a6a;
+  --text-muted: #8888aa;
+  --border: #e0e0f0;
+  --border-strong: #c8c8e8;
+  --shadow-sm: 0 2px 12px rgba(86,89,186,0.08);
+  --shadow-md: 0 8px 32px rgba(86,89,186,0.12);
+  --shadow-lg: 0 20px 60px rgba(86,89,186,0.16);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --ff-serif: 'Cormorant Garamond', Georgia, serif;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+.star { color: #fbbf24; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
+  border-radius: var(--radius-sm); font-size: 13px; font-weight: 500;
+  padding: 11px 18px; transition: all 0.2s ease;
+}
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-outline { background: #fff; border: 1.5px solid var(--brand); color: var(--brand); }
+.btn-outline:hover { background: var(--brand-pale); }
+.btn-soft { background: var(--brand-pale); color: var(--brand); border: 1px solid rgba(86,89,186,0.2); }
+.btn-soft:hover { background: #e6e6ff; }
+.btn-sm { padding: 9px 18px; font-size: 13px; }
+
+.lc-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+.lc-nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.lc-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.lc-logo img {
+  width: auto;
+  height: 30px;
+  display: block;
+  filter: drop-shadow(0 1px 1px rgba(62, 65, 160, 0.25));
+}
+.lc-nav-links { display: flex; gap: 36px; list-style: none; }
+.lc-nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--text-mid);
+  letter-spacing: 0.04em; transition: color 0.18s;
+  position: relative; padding-bottom: 2px;
+}
+.lc-nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 2px; background: var(--brand);
+  transition: width 0.22s ease;
+}
+.lc-nav-links a:hover { color: var(--brand); }
+.lc-nav-links a:hover::after { width: 100%; }
+.lc-nav-actions { display: flex; gap: 10px; align-items: center; }
+
+.detail-hero {
+  background: linear-gradient(180deg, var(--off-white) 0%, #fff 100%);
+  padding: 26px 0 0;
+}
+.breadcrumb {
+  font-size: 12px; color: var(--text-muted);
+  display: flex; gap: 8px; margin-bottom: 18px;
+}
+.breadcrumb a { color: var(--text-mid); }
+.detail-top {
+  display: flex; justify-content: space-between; gap: 20px; align-items: flex-start;
+  margin-bottom: 24px;
+}
+.detail-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1; color: var(--text-dark);
+}
+.detail-sub {
+  font-size: 14px; color: var(--text-mid); margin-top: 8px;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.status-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 999px; padding: 5px 12px;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 500;
+}
+.status-pill.rent { background: var(--brand-pale); color: var(--brand); }
+.status-pill.verified { background: #ebf8f2; color: #1a7a5a; }
+.price-block {
+  text-align: right;
+}
+.price-main {
+  font-family: var(--ff-serif);
+  font-size: 44px; line-height: 1; color: var(--brand);
+}
+.price-main small {
+  font-family: 'Outfit', sans-serif; font-size: 13px;
+  color: var(--text-muted); font-weight: 400;
+}
+.price-sub { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+.gallery {
+  display: grid; grid-template-columns: 1.6fr 1fr; gap: 14px;
+}
+.gallery-main, .gallery-small {
+  border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border);
+}
+.gallery-main { height: 430px; position: relative; }
+.gallery-side {
+  display: grid; grid-template-rows: repeat(3, 1fr); gap: 14px;
+}
+.gallery-small { height: 134px; position: relative; }
+.gallery-label {
+  position: absolute; left: 12px; bottom: 12px;
+  background: rgba(18,18,42,0.72); color: rgba(255,255,255,0.95);
+  border-radius: 8px; padding: 6px 10px; font-size: 11px;
+}
+.gallery-all {
+  position: absolute; right: 12px; bottom: 12px;
+}
+
+.layout {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 28px; padding: 28px 0 80px;
+}
+.section-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: var(--ff-serif);
+  font-size: 28px; color: var(--text-dark);
+  margin-bottom: 14px;
+}
+.muted { color: var(--text-muted); }
+
+.spec-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+}
+.spec-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background: var(--off-white);
+}
+.spec-k {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-muted); margin-bottom: 4px;
+}
+.spec-v { font-size: 14px; color: var(--text-dark); font-weight: 500; }
+
+.amenities {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;
+}
+.amenity {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
+  font-size: 13px;
+  color: var(--text-mid);
+  background: #fff;
+}
+
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.metric-box {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+.metric-big {
+  font-family: var(--ff-serif); font-size: 30px; color: var(--brand);
+  line-height: 1;
+}
+.metric-label { font-size: 12px; color: var(--text-muted); }
+
+.timeline {
+  display: grid; gap: 10px;
+}
+.timeline-item {
+  border-left: 2px solid var(--brand-light);
+  padding-left: 12px;
+}
+.timeline-date { font-size: 11px; color: var(--text-muted); }
+.timeline-text { font-size: 13px; color: var(--text-mid); }
+
+.map-box {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  height: 260px;
+  background:
+    linear-gradient(135deg, rgba(86,89,186,0.08), rgba(86,89,186,0.02)),
+    repeating-linear-gradient(0deg, #f7f7fd, #f7f7fd 24px, #eff0fb 24px, #eff0fb 25px),
+    repeating-linear-gradient(90deg, #f7f7fd, #f7f7fd 24px, #eff0fb 24px, #eff0fb 25px);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-mid);
+  font-size: 13px;
+}
+
+.sidebar-sticky { position: sticky; top: 88px; }
+.side-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.side-price {
+  font-family: var(--ff-serif); font-size: 36px; color: var(--brand);
+  line-height: 1;
+}
+.side-price small {
+  font-family: 'Outfit', sans-serif; font-size: 12px;
+  color: var(--text-muted); font-weight: 400;
+}
+.side-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--text-mid);
+  padding: 8px 0; border-bottom: 1px dashed var(--border);
+}
+.side-row:last-child { border-bottom: none; }
+
+.agent {
+  display: flex; gap: 12px; align-items: center; margin-bottom: 12px;
+}
+.agent-avatar {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--brand-pale); border: 1px solid rgba(86,89,186,0.24);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-serif); font-size: 20px; color: var(--brand);
+}
+.agent-name { font-size: 16px; color: var(--text-dark); font-weight: 500; }
+.agent-meta { font-size: 12px; color: var(--text-muted); }
+
+.field { margin-bottom: 10px; }
+.field input, .field textarea {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  background: var(--off-white);
+}
+.field textarea { min-height: 92px; resize: vertical; }
+.field input:focus, .field textarea:focus {
+  outline: none; border-color: var(--brand);
+  background: #fff;
+}
+
+.similar-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+}
+.mini-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #fff;
+}
+.mini-img { height: 120px; }
+.mini-body { padding: 10px; }
+.mini-title {
+  font-family: var(--ff-serif); font-size: 18px; color: var(--text-dark);
+  line-height: 1.1;
+}
+.mini-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.mini-price {
+  font-family: var(--ff-serif); font-size: 22px; color: var(--brand); margin-top: 6px;
+}
+
+.lc-footer { background: var(--text-dark); padding: 48px 0 28px; }
+.lc-footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+.lc-footer-logo { font-family: var(--ff-serif); font-size: 20px; color: var(--brand-light); margin-bottom: 8px; }
+.lc-footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 300; margin-bottom: 24px; }
+
+@media (max-width: 1050px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar-sticky { position: static; }
+}
+@media (max-width: 860px) {
+  .container { padding: 0 20px; }
+  .lc-nav-links, .lc-nav-actions { display: none; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery-main { height: 300px; }
+  .gallery-side { grid-template-columns: repeat(3, 1fr); grid-template-rows: none; }
+  .gallery-small { height: 100px; }
+  .spec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .amenities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .two-col { grid-template-columns: 1fr; }
+  .similar-grid { grid-template-columns: 1fr; }
+  .detail-top { flex-direction: column; }
+  .price-block { text-align: left; }
+}
+</style>
+</head>
+<body>
+<nav class="lc-nav">
+  <div class="container">
+    <div class="lc-nav-inner">
+      <a href="index.html" class="lc-logo" aria-label="lacasa24 home">
+        <img src="logo.svg" alt="lacasa24" />
+      </a>
+      <ul class="lc-nav-links">
+        <li><a href="listings.html">Find Property</a></li>
+        <li><a href="sell-rent.html">Sell</a></li>
+        <li><a href="rent.html">Rent</a></li>
+        <li><a href="evaluate.html">Evaluate Property</a></li>
+        <li><a href="overview.html">Overview</a></li>
+      </ul>
+      <div class="lc-nav-actions">
+        <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Log in</button>
+        <button class="btn btn-primary btn-sm" onclick="window.location.href='list-property.html'">List Property</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="detail-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="listings.html">Listings</a>
+      <span>›</span>
+      <span>Private Hillside Villa</span>
+    </div>
+
+    <div class="detail-top">
+      <div>
+        <h1 class="detail-title">Private Hillside Villa with Infinity Pool</h1>
+        <div class="detail-sub">
+          <span>📍 Ubud Ridge, Bali, Indonesia</span>
+          <span><span class="star">★</span> 4.97 (82 verified reviews)</span>
+          <span class="status-pill rent">For Rent</span>
+          <span class="status-pill verified">Verified Listing</span>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price-main">€ 5,900 <small>/ month</small></div>
+        <div class="price-sub">Minimum stay: 3 months · Includes weekly maintenance</div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-main">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&q=80" alt="Main view" />
+        <div class="gallery-label">Living area + valley sunset view</div>
+        <button class="btn btn-soft gallery-all">View 32 photos</button>
+      </div>
+      <div class="gallery-side">
+        <div class="gallery-small">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80" alt="Bedroom" />
+          <div class="gallery-label">Master suite</div>
+        </div>
+        <div class="gallery-small">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80" alt="Lounge" />
+          <div class="gallery-label">Open lounge</div>
+        </div>
+        <div class="gallery-small">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80" alt="Pool" />
+          <div class="gallery-label">Infinity pool deck</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container layout">
+  <section>
+    <div class="section-card">
+      <h2 class="section-title">Key Property Facts</h2>
+      <div class="spec-grid">
+        <div class="spec-item"><div class="spec-k">Property Type</div><div class="spec-v">Villa</div></div>
+        <div class="spec-item"><div class="spec-k">Interior Size</div><div class="spec-v">136 m²</div></div>
+        <div class="spec-item"><div class="spec-k">Bedrooms</div><div class="spec-v">5 rooms</div></div>
+        <div class="spec-item"><div class="spec-k">Bathrooms</div><div class="spec-v">4 full baths</div></div>
+        <div class="spec-item"><div class="spec-k">Lot / Outdoor</div><div class="spec-v">410 m² garden</div></div>
+        <div class="spec-item"><div class="spec-k">Furnishing</div><div class="spec-v">Fully furnished</div></div>
+        <div class="spec-item"><div class="spec-k">Parking</div><div class="spec-v">2 covered spots</div></div>
+        <div class="spec-item"><div class="spec-k">Year Built</div><div class="spec-v">2021</div></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Description</h2>
+      <p>
+        Set above the lush Ubud ridge, this private hillside villa combines modern tropical architecture with
+        high-end finishes designed for long stays and international tenants. The home features an open-concept
+        living room with floor-to-ceiling glass doors, a chef-style kitchen with premium appliances, and a
+        20-meter infinity pool overlooking uninterrupted jungle views.
+      </p>
+      <p style="margin-top:12px;">
+        Each bedroom has an ensuite bathroom, custom storage, and dedicated climate control. The master suite
+        includes a deep soaking tub and private terrace. Reliable high-speed fiber internet, a backup power
+        system, and weekly maintenance make this property ideal for remote professionals, relocating families,
+        or executive rentals.
+      </p>
+      <p style="margin-top:12px;">
+        The villa is located in a secure gated lane 10 minutes from central Ubud and within easy reach of
+        wellness studios, international schools, cafes, and medical services.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Amenities & Features</h2>
+      <div class="amenities">
+        <div class="amenity">🏊 Private Infinity Pool</div>
+        <div class="amenity">📶 300 Mbps Fiber Internet</div>
+        <div class="amenity">🧹 Weekly Housekeeping</div>
+        <div class="amenity">❄️ Central + Room AC</div>
+        <div class="amenity">🍳 Fully Equipped Kitchen</div>
+        <div class="amenity">🚗 Covered Parking</div>
+        <div class="amenity">🔐 Smart Access + CCTV</div>
+        <div class="amenity">🐾 Pet Friendly (with terms)</div>
+        <div class="amenity">🌿 Landscaped Garden</div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Financial Snapshot</h2>
+      <div class="two-col">
+        <div class="metric-box">
+          <div class="metric-big">€ 5,900</div>
+          <div class="metric-label">Monthly rent</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-big">€ 11,800</div>
+          <div class="metric-label">Security deposit (2 months)</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-big">€ 590</div>
+          <div class="metric-label">Estimated monthly utilities</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-big">7.9%</div>
+          <div class="metric-label">Projected annual rental yield</div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px;">Figures are estimated and may vary based on occupancy and utility usage.</p>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Neighborhood & Access</h2>
+      <div class="map-box">Interactive map placeholder · Ubud Ridge zone</div>
+      <div class="two-col" style="margin-top:12px;">
+        <div class="metric-box"><div class="metric-big">10 min</div><div class="metric-label">to Ubud Center</div></div>
+        <div class="metric-box"><div class="metric-big">42 min</div><div class="metric-label">to Ngurah Rai Airport</div></div>
+        <div class="metric-box"><div class="metric-big">6 min</div><div class="metric-label">to nearest international school</div></div>
+        <div class="metric-box"><div class="metric-big">4.8/5</div><div class="metric-label">neighborhood satisfaction score</div></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Listing Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">15 Apr 2026</div>
+          <div class="timeline-text">Listing published with complete verification package.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">19 Apr 2026</div>
+          <div class="timeline-text">Price adjusted from €6,200 to €5,900 after market review.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">21 Apr 2026</div>
+          <div class="timeline-text">New drone photos and floor plan uploaded.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Similar Properties</h2>
+      <div class="similar-grid">
+        <a class="mini-card" href="listing-detail.html">
+          <div class="mini-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Dubai" /></div>
+          <div class="mini-body">
+            <div class="mini-title">Skyline Penthouse</div>
+            <div class="mini-sub">Dubai Marina · 4 rooms · 180 m²</div>
+            <div class="mini-price">€ 5,400</div>
+          </div>
+        </a>
+        <a class="mini-card" href="listing-detail.html">
+          <div class="mini-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80" alt="Lisbon" /></div>
+          <div class="mini-body">
+            <div class="mini-title">Loft in Old Town</div>
+            <div class="mini-sub">Lisbon · 3 rooms · 72 m²</div>
+            <div class="mini-price">€ 4,200</div>
+          </div>
+        </a>
+        <a class="mini-card" href="listing-detail.html">
+          <div class="mini-img"><img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=700&q=80" alt="Split" /></div>
+          <div class="mini-body">
+            <div class="mini-title">Sea Breeze House</div>
+            <div class="mini-sub">Split · 4 rooms · 112 m²</div>
+            <div class="mini-price">€ 4,600</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <aside class="sidebar-sticky">
+    <div class="side-card">
+      <div class="side-price">€ 5,900 <small>/ month</small></div>
+      <div class="side-row"><span>Security deposit</span><strong>2 months</strong></div>
+      <div class="side-row"><span>Contract length</span><strong>3-24 months</strong></div>
+      <div class="side-row"><span>Move-in availability</span><strong>Immediate</strong></div>
+      <div class="side-row"><span>Service fee</span><strong>€ 0</strong></div>
+      <div style="display:grid; gap:8px; margin-top:12px;">
+        <button class="btn btn-primary" style="width:100%;">Schedule Viewing</button>
+        <button class="btn btn-outline" style="width:100%;">Save Listing</button>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="agent">
+        <div class="agent-avatar">JM</div>
+        <div>
+          <div class="agent-name">Jane Moreau</div>
+          <div class="agent-meta">Senior Property Consultant · 8 years</div>
+          <div class="agent-meta"><span class="star">★</span> 4.95 · 126 deals closed</div>
+        </div>
+      </div>
+      <div style="display:grid; gap:8px;">
+        <button class="btn btn-soft" style="width:100%;">Call Agent</button>
+        <button class="btn btn-soft" style="width:100%;">WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <h3 style="font-family:var(--ff-serif); font-size:24px; margin-bottom:8px;">Request Information</h3>
+      <div class="field"><input type="text" placeholder="Your full name" /></div>
+      <div class="field"><input type="email" placeholder="Email address" /></div>
+      <div class="field"><input type="tel" placeholder="Phone number" /></div>
+      <div class="field"><textarea placeholder="I am interested in this property. Please share more details about viewing and contract terms."></textarea></div>
+      <button class="btn btn-primary" style="width:100%;">Send Inquiry</button>
+      <p class="muted" style="font-size:11px; margin-top:8px;">By submitting, you agree to be contacted by our local partner agent.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="lc-footer">
+  <div class="container">
+    <div class="lc-footer-logo">lacasa24</div>
+    <div class="lc-footer-tagline">Your trusted partner for international property.</div>
+    <div class="lc-footer-bottom">
+      <span>© 2025 lacasa24 Inc. All rights reserved.</span>
+      <span>Settle beyond borders.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

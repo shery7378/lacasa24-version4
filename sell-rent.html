@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>lacasa24 — Sell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #ffffff;
+  color: #1a1a2e;
+  font-size: 15px;
+  line-height: 1.6;
+}
+:root {
+  --brand: #5659ba;
+  --brand-dark: #3e41a0;
+  --brand-light: #7b7ece;
+  --brand-pale: #eeeeff;
+  --brand-soft: #f4f4ff;
+  --white: #ffffff;
+  --off-white: #f8f8fc;
+  --text-dark: #12122a;
+  --text-mid: #4a4a6a;
+  --text-muted: #8888aa;
+  --border: #e0e0f0;
+  --shadow-sm: 0 2px 12px rgba(86,89,186,0.08);
+  --shadow-md: 0 8px 32px rgba(86,89,186,0.12);
+  --shadow-lg: 0 20px 60px rgba(86,89,186,0.16);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --ff-serif: 'Cormorant Garamond', Georgia, serif;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 11px 18px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 500; border: none; cursor: pointer;
+  font-family: 'Outfit', sans-serif; transition: all 0.2s ease;
+}
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-outline { background: #fff; border: 1.5px solid var(--brand); color: var(--brand); }
+.btn-outline:hover { background: var(--brand-pale); }
+.btn-sm { padding: 9px 18px; font-size: 13px; }
+
+.lc-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+.lc-nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.lc-logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: none; border-radius: 0;
+  padding: 0; box-shadow: none;
+}
+.lc-logo img { width: auto; height: 30px; filter: drop-shadow(0 1px 1px rgba(62, 65, 160, 0.25)); }
+.lc-nav-links { display: flex; gap: 36px; list-style: none; }
+.lc-nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--text-mid);
+  letter-spacing: 0.04em; transition: color 0.18s;
+  position: relative; padding-bottom: 2px;
+}
+.lc-nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 2px; background: var(--brand);
+  transition: width 0.22s ease;
+}
+.lc-nav-links a:hover { color: var(--brand); }
+.lc-nav-links a:hover::after { width: 100%; }
+.lc-nav-actions { display: flex; gap: 10px; align-items: center; }
+
+.cs-wrap {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(86,89,186,0.08) 0, rgba(86,89,186,0) 45%),
+    radial-gradient(circle at 8% 85%, rgba(86,89,186,0.07) 0, rgba(86,89,186,0) 40%),
+    linear-gradient(180deg, var(--off-white) 0%, #fff 65%);
+}
+.cs-card {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.cs-top {
+  padding: 34px 36px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brand); font-weight: 600; margin-bottom: 10px;
+}
+.cs-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.08;
+  color: var(--text-dark);
+}
+.cs-title em { color: var(--brand); font-style: italic; }
+.cs-sub {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--text-mid);
+  max-width: 760px;
+}
+
+.switch-wrap {
+  margin-top: 22px;
+  display: inline-flex;
+  background: #f5f6ff;
+  border: 1px solid #dfe3fb;
+  border-radius: 999px;
+  padding: 5px;
+  gap: 6px;
+}
+.switch-btn {
+  border: none;
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-mid);
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.2s ease;
+}
+.switch-btn.active {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(86,89,186,0.24);
+}
+
+.cs-content {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 20px;
+  padding: 26px 36px 34px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.info-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--off-white);
+  padding: 14px;
+}
+.info-title {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.info-value {
+  font-size: 15px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+.notice {
+  margin-top: 12px;
+  border: 1px solid rgba(86,89,186,0.25);
+  background: var(--brand-pale);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  font-size: 13px;
+  color: var(--brand-dark);
+}
+.next-list {
+  margin-top: 12px;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.next-list li {
+  font-size: 13px;
+  color: var(--text-mid);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  background: #fff;
+}
+.panel h3 {
+  font-family: var(--ff-serif);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.panel p {
+  font-size: 14px;
+  color: var(--text-mid);
+  margin-bottom: 14px;
+}
+.actions {
+  display: grid;
+  gap: 8px;
+}
+.tiny {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 980px) {
+  .cs-content { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .container { padding: 0 20px; }
+  .lc-nav-links, .lc-nav-actions { display: none; }
+  .cs-top, .cs-content { padding: 20px; }
+  .info-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+  <nav class="lc-nav">
+    <div class="container">
+      <div class="lc-nav-inner">
+        <a href="index.html" class="lc-logo" aria-label="lacasa24 home">
+          <img src="logo.svg" alt="lacasa24" />
+        </a>
+        <ul class="lc-nav-links">
+          <li><a href="listings.html">Find Property</a></li>
+          <li><a href="sell-rent.html">Sell</a></li>
+          <li><a href="rent.html">Rent</a></li>
+          <li><a href="evaluate.html">Evaluate Property</a></li>
+          <li><a href="overview.html">Overview</a></li>
+        </ul>
+        <div class="lc-nav-actions">
+          <button class="btn btn-outline btn-sm" onclick="window.location.href='login.html'">Log in</button>
+          <button class="btn btn-primary btn-sm" onclick="window.location.href='list-property.html'">List Property</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="cs-wrap">
+    <div class="container">
+      <section class="cs-card">
+        <div class="cs-top">
+          <div class="eyebrow">Platform Expansion</div>
+          <h1 class="cs-title">Sell tools are <em>coming soon</em></h1>
+          <p class="cs-sub">
+            We are building a premium seller experience for listing management, valuation workflows,
+            lead qualification, and agent-assisted onboarding.
+          </p>
+        </div>
+
+        <div class="cs-content">
+          <div>
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="info-title">Status</div>
+                <div class="info-value">In private beta</div>
+              </div>
+              <div class="info-card">
+                <div class="info-title">Expected Launch</div>
+                <div class="info-value">Q3 2026</div>
+              </div>
+              <div class="info-card">
+                <div class="info-title">Coverage</div>
+                <div class="info-value">40+ international markets</div>
+              </div>
+              <div class="info-card">
+                <div class="info-title">Priority</div>
+                <div class="info-value">Verified property owners first</div>
+              </div>
+            </div>
+
+            <div class="notice">
+              We are currently finalizing legal, onboarding, and compliance workflows to ensure secure cross-border
+              transactions with secure seller verification and cross-border compliance.
+            </div>
+
+            <ul class="next-list">
+              <li>✔ Professional listing creation flow with guided media uploads</li>
+              <li>✔ Smart pricing recommendations based on live market data</li>
+              <li>✔ Contract-ready lead qualification and messaging workspace</li>
+              <li>✔ Dedicated account manager for premium listings</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Join the early access list</h3>
+            <p>
+              Get notified as soon as Sell is available and receive priority onboarding for your first listing.
+            </p>
+            <div class="actions">
+              <button class="btn btn-primary" type="button">Request Early Access</button>
+              <a href="listings.html" class="btn btn-outline">Explore Current Listings</a>
+            </div>
+            <div class="tiny">No commitment required. We will only contact you about launch updates.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
