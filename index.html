@@ -651,15 +651,16 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
 .lc-divider { border: none; border-top: 1px solid var(--border); }
 
 /* ===================== FOOTER ===================== */
-.lc-footer { background: var(--text-dark); padding: 64px 0 32px; }
+.lc-footer { background: #5659ba; padding: 64px 0 32px; }
 .lc-footer-grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px; margin-bottom: 48px;
 }
 .lc-footer-logo {
-  font-family: var(--ff-serif); font-size: 24px;
-  color: var(--brand-light); margin-bottom: 14px;
+  width: fit-content;
+  margin-bottom: 14px;
 }
+.lc-footer-logo img { width: auto; height: 30px; display: block; }
 .lc-footer-tagline {
   font-size: 13px; color: rgba(255,255,255,0.45);
   line-height: 1.75; font-weight: 300; max-width: 260px; margin-bottom: 24px;
@@ -1357,7 +1358,7 @@ input[type="date"].lc-sf-control { color-scheme: light; cursor: pointer; }
   <div class="container">
     <div class="lc-footer-grid">
       <div>
-        <div class="lc-footer-logo">lacasa24</div>
+        <div class="lc-footer-logo"><img src="logo.svg" alt="lacasa24" /></div>
         <div class="lc-footer-tagline">Your trusted partner for international property. We connect buyers, renters, and sellers across borders with expertise and care.</div>
         <div class="lc-footer-social">
           <div class="lc-social-btn">in</div>
