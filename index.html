@@ -885,8 +885,8 @@
       position: absolute;
       top: 12px;
       right: 12px;
-      min-width: 20px;
-      height: 31px;
+      min-width: 40px;
+      height: 34px;
       border-radius: 999px;
       padding: 0 10px;
       background: rgba(255, 255, 255, 0.94);
@@ -900,6 +900,8 @@
       transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 8px 20px rgba(18, 18, 42, 0.15);
       backdrop-filter: blur(6px);
+      font-family: inherit;
+      z-index: 5;
     }
 
     .lc-card-fav:hover {
@@ -918,8 +920,8 @@
       position: absolute;
       top: 12px;
       right: 12px;
-      min-width: 20px;
-      height: 31px;
+      min-width: 40px;
+      height: 34px;
       border-radius: 999px;
       padding: 0 10px;
       background: rgba(255, 255, 255, 0.94);
@@ -933,17 +935,20 @@
       transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 8px 20px rgba(18, 18, 42, 0.15);
       backdrop-filter: blur(6px);
+      font-family: inherit;
+      z-index: 10;
     }
 
     .lc-mc-fav:hover {
-      background: rgba(255, 255, 255, 0.32);
+      color: #e84a5f;
+      background: #fff;
       transform: translateY(-1px);
     }
 
     .lc-mc-fav.liked {
-      color: #ff5a70;
-      background: rgba(255, 255, 255, 0.95);
-      border-color: rgba(255, 255, 255, 0.95);
+      color: #e84a5f;
+      background: #fff1f3;
+      border-color: #f8c8d0;
     }
 
     .lc-card-body {
