@@ -2481,86 +2481,8 @@
       </div>
     </div>
   </div>
+  <div id="footer-placeholder"></div>
 
-  <!-- FOOTER -->
-  <footer class="lc-footer">
-    <div class="container">
-      <div class="lc-footer-grid">
-        <div>
-          <div class="lc-footer-logo"><img src="logo-footer.svg" alt="lacasa24" /></div>
-          <div class="lc-footer-tagline">Your trusted partner for international property. We connect buyers, renters,
-            and sellers across borders with expertise and care.</div>
-          <div class="lc-footer-social">
-            <a class="lc-social-btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"
-              aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-            <a class="lc-social-btn" href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
-              aria-label="Twitter">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 12 8v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 1 23 3z" />
-              </svg>
-            </a>
-            <a class="lc-social-btn" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
-              aria-label="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
-            <a class="lc-social-btn" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"
-              aria-label="YouTube">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="lc-footer-col">
-          <h2>Platform</h2>
-          <ul>
-            <li><a href="listings.html">Find Property</a></li>
-            <li><a href="sell-rent.html">Sell</a></li>
-            <li><a href="rent.html">Rent</a></li>
-            <li><a href="evaluate.html">Evaluate</a></li>
-            <li><a href="overview.html">Overview</a></li>
-          </ul>
-        </div>
-        <div class="lc-footer-col">
-          <h2>Services</h2>
-          <ul>
-            <li><a href="#">Legal Help</a></li>
-            <li><a href="#">Agent Network</a></li>
-            <li><a href="#">Relocation Guide</a></li>
-            <li><a href="#">Visa Programs</a></li>
-            <li><a href="#">Market Reports</a></li>
-          </ul>
-        </div>
-        <div class="lc-footer-col">
-          <h2>Company</h2>
-          <ul>
-            <li><a href="overview.html">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="lc-footer-bottom">
-        <span>&copy; 2025 lacasa24 Inc. All rights reserved.</span>
-        <span>Settle beyond borders.</span>
-      </div>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
   <script>
@@ -2685,6 +2607,14 @@
         document.querySelector('.lc-hamburger')?.classList.remove('open');
       }
     });
+
+    // Load Footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
   </script>
 </body>
 
