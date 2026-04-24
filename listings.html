@@ -940,7 +940,7 @@ select.lc-sf-control { cursor: pointer; }
 	          <div class="lc-sf-label">Move in</div>
 	          <input class="lc-sf-control lc-date" type="text" data-datepicker placeholder="mm/dd/yyyy" aria-label="Move in date" />
 	        </div>
-        <button class="lc-search-btn">
+        <button class="lc-search-btn" id="main-search-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -1152,288 +1152,8 @@ select.lc-sf-control { cursor: pointer; }
 
       <!-- Cards -->
       <div class="lc-grid" id="listings-grid">
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Valencia" />
-            <div class="lc-card-tag rent">For Rent</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">58 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Valencia, Spain</div>
-            <a href="listing-detail.html" class="lc-card-title">Riverside Designer Studio</a>
-            <div class="lc-card-desc">A light-filled studio in the heart of Valencia's arts district, walking distance to the Turia gardens and the best tapas bars in town.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 2 rooms</div>
-              <div class="lc-card-meta-item">🚿 1 bath</div>
-              <div class="lc-card-meta-item">📐 58 m²</div>
-              <div class="lc-card-meta-item">🏊 Pool</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 2,950 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.82 · 36 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 2,950 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.82 · 36 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="Bali" />
-            <div class="lc-card-tag rent">For Rent</div>
-            <div class="lc-card-fav liked" onclick="toggleFav(event, this)">♥</div>
-            <div class="lc-card-badge">136 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Bali, Indonesia</div>
-            <div class="lc-card-title">Private Hillside Villa with Infinity Pool</div>
-            <div class="lc-card-desc">Perched above Ubud's lush jungle, this extraordinary villa offers complete privacy, a 20m infinity pool, and sweeping views of the Campuhan ridge.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 5 rooms</div>
-              <div class="lc-card-meta-item">🚿 4 baths</div>
-              <div class="lc-card-meta-item">📐 136 m²</div>
-              <div class="lc-card-meta-item">🏊 Pool</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 5,900 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.97 · 82 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 5,900 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.97 · 82 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Athens" />
-            <div class="lc-card-tag sale">For Sale</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">78 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Athens, Greece</div>
-            <div class="lc-card-title">Modern Garden Residence</div>
-            <div class="lc-card-desc">A meticulously renovated home in Kifissia with a private garden, Italian kitchen, and access to a communal pool. 10 min to city centre.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 3 rooms</div>
-              <div class="lc-card-meta-item">🚿 2 baths</div>
-              <div class="lc-card-meta-item">📐 78 m²</div>
-              <div class="lc-card-meta-item">🌿 Garden</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 3,150 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.91 · 51 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 3,150 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.91 · 51 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=80" alt="Croatia" />
-            <div class="lc-card-tag rent">For Rent</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">112 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Split, Croatia</div>
-            <div class="lc-card-title">Sea Breeze Family House</div>
-            <div class="lc-card-desc">A generous stone house with four bedrooms on Split's Bačvice waterfront. Private terrace with Adriatic views, pets welcome.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 4 rooms</div>
-              <div class="lc-card-meta-item">🚿 3 baths</div>
-              <div class="lc-card-meta-item">📐 112 m²</div>
-              <div class="lc-card-meta-item">🐾 Pets OK</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 4,600 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.95 · 63 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 4,600 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.95 · 63 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Nice" />
-            <div class="lc-card-tag sale">For Sale</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">48 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Nice, France</div>
-            <div class="lc-card-title">Compact Designer Studio</div>
-            <div class="lc-card-desc">Perfectly positioned studio in Nice's Carré d'Or, walking distance from the Promenade des Anglais. Ideal for digital nomads.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 1 room</div>
-              <div class="lc-card-meta-item">🚿 1 bath</div>
-              <div class="lc-card-meta-item">📐 48 m²</div>
-              <div class="lc-card-meta-item">📋 Furnished</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 2,300 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.79 · 28 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 2,300 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.79 · 28 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Lisbon" />
-            <div class="lc-card-tag rent">For Rent</div>
-            <div class="lc-card-fav liked" onclick="toggleFav(event, this)">♥</div>
-            <div class="lc-card-badge">72 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Lisbon, Portugal</div>
-            <div class="lc-card-title">Loft in the Old Town</div>
-            <div class="lc-card-desc">A stunning converted warehouse loft in Alfama with original azulejo tiles, exposed beams, and rooftop terrace overlooking the Tagus.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 3 rooms</div>
-              <div class="lc-card-meta-item">🚿 2 baths</div>
-              <div class="lc-card-meta-item">📐 72 m²</div>
-              <div class="lc-card-meta-item">📋 Furnished</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 4,200 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.88 · 44 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 4,200 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.88 · 44 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Mallorca" />
-            <div class="lc-card-tag rent">For Rent</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">165 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Mallorca, Spain</div>
-            <div class="lc-card-title">Seafront Finca with Pool</div>
-            <div class="lc-card-desc">A classic Mallorcan finca with 5 bedrooms, a 15m private pool, wine cellar, and direct beach access. Available from June.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 5 rooms</div>
-              <div class="lc-card-meta-item">🚿 4 baths</div>
-              <div class="lc-card-meta-item">📐 165 m²</div>
-              <div class="lc-card-meta-item">🏊 Pool</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 7,400 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.96 · 19 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 7,400 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.96 · 19 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" alt="Porto" />
-            <div class="lc-card-tag sale">For Sale</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">90 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Porto, Portugal</div>
-            <div class="lc-card-title">Historic Townhouse Duplex</div>
-            <div class="lc-card-desc">Two floors of restored 19th-century architecture in Bonfim, with a private courtyard, panoramic city views, and smart home features.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 3 rooms</div>
-              <div class="lc-card-meta-item">🚿 2 baths</div>
-              <div class="lc-card-meta-item">📐 90 m²</div>
-              <div class="lc-card-meta-item">🌿 Patio</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 3,750 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.84 · 37 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 3,750 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.84 · 37 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lc-card">
-          <div class="lc-card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&q=80" alt="Dubai" />
-            <div class="lc-card-tag sale">For Sale</div>
-            <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
-            <div class="lc-card-badge">180 m²</div>
-          </div>
-          <div class="lc-card-body">
-            <div class="lc-card-loc">📍 Dubai Marina, UAE</div>
-            <div class="lc-card-title">Skyline Penthouse Suite</div>
-            <div class="lc-card-desc">Full-floor penthouse above the Marina with private jacuzzi terrace, 24-hr concierge, and direct views of the Palm and Burj Al Arab.</div>
-            <div class="lc-card-meta">
-              <div class="lc-card-meta-item">🛏 4 rooms</div>
-              <div class="lc-card-meta-item">🚿 4 baths</div>
-              <div class="lc-card-meta-item">📐 180 m²</div>
-              <div class="lc-card-meta-item">🛡️ Concierge</div>
-            </div>
-            <div class="lc-card-footer">
-              <div class="lc-price">€ 5,400 <small>/ mo</small></div>
-              <div class="lc-rating"><span class="star">★</span> 4.93 · 72 reviews</div>
-            </div>
-            <div class="lc-card-footer-area">
-              <div>
-                <div class="lc-price">€ 5,400 <small>/ mo</small></div>
-                <div class="lc-rating"><span class="star">★</span> 4.93 · 72 reviews</div>
-              </div>
-              <button class="contact-btn">Contact Agent</button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- end grid -->
-
+        <!-- Dynamic Content from properties.json -->
+      </div>
       <!-- Pagination -->
       <div class="pagination">
         <button class="page-btn disabled">←</button>
@@ -1499,19 +1219,129 @@ function toggleType(el) {
   el.classList.add('active');
 }
 
+let allProperties = [];
+
+async function loadProperties() {
+  try {
+    const response = await fetch('properties.json');
+    allProperties = await response.json();
+    renderProperties(allProperties);
+  } catch (error) {
+    console.error('Error loading properties:', error);
+  }
+}
+
+function renderProperties(props) {
+  const grid = document.getElementById('listings-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  if (props.length === 0) {
+    grid.innerHTML = '<div class="no-results">No properties found matching your criteria.</div>';
+    return;
+  }
+
+  props.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'lc-card';
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+    card.innerHTML = `
+      <div class="lc-card-img-wrap">
+        <img src="${p.image}" alt="${p.title}" />
+        <div class="lc-card-tag ${p.type.toLowerCase()}">For ${p.type}</div>
+        <div class="lc-card-fav" onclick="toggleFav(event, this)">♡</div>
+        <div class="lc-card-badge">${p.size} m²</div>
+      </div>
+      <div class="lc-card-body">
+        <div class="lc-card-loc">📍 ${p.location}</div>
+        <div class="lc-card-title">${p.title}</div>
+        <div class="lc-card-desc">${p.description}</div>
+        <div class="lc-card-meta">
+          <div class="lc-card-meta-item">🛏 ${p.rooms} rooms</div>
+          <div class="lc-card-meta-item">🚿 ${p.baths} baths</div>
+          <div class="lc-card-meta-item">📐 ${p.size} m²</div>
+          ${p.amenities.map(a => `<div class="lc-card-meta-item">${a}</div>`).join('')}
+        </div>
+        <div class="lc-card-footer">
+          <div class="lc-price">€ ${p.price.toLocaleString()} <small>/ mo</small></div>
+          <div class="lc-rating"><span class="star">★</span> ${p.rating} · ${p.reviews} reviews</div>
+        </div>
+        <div class="lc-card-footer-area">
+          <div>
+            <div class="lc-price">€ ${p.price.toLocaleString()} <small>/ mo</small></div>
+            <div class="lc-rating"><span class="star">★</span> ${p.rating} · ${p.reviews} reviews</div>
+          </div>
+          <button class="contact-btn">Contact Agent</button>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', goToListingDetail);
+    card.addEventListener('keydown', goToListingDetailFromKey);
+    grid.appendChild(card);
+  });
+}
+
+function updateFilters() {
+  const destination = document.querySelector('[data-dd-search][placeholder*="Destination"]')?.value.toLowerCase().trim() || '';
+  const type = document.querySelector('[data-dd-trigger][data-dd-trigger]')?.textContent.trim() || 'Rent';
+  const minBudget = parseBudgetNumber(document.getElementById('budget-min-range')?.value || 0);
+  const maxBudget = parseBudgetNumber(document.getElementById('budget-max-range')?.value || 10000);
+  
+  const roomBtn = document.querySelector('.rooms-select .room-btn.active');
+  const rooms = roomBtn ? roomBtn.textContent.trim() : 'Any';
+
+  const selectedTypes = Array.from(document.querySelectorAll('.sidebar .check-list:nth-of-type(1) input:checked')).map(i => i.parentElement.textContent.trim().split(' ')[0]);
+  const selectedCountries = Array.from(document.querySelectorAll('.sidebar .check-list:nth-of-type(2) input:checked')).map(i => i.parentElement.textContent.trim().split(' ')[0]);
+
+  const filtered = allProperties.filter(p => {
+    // Destination search (from top bar)
+    if (destination && !p.location.toLowerCase().includes(destination)) return false;
+    
+    // Type search (from top bar dropdown)
+    if (type !== 'Type') {
+      const normalizedType = type === 'Sell' || type === 'Buy' ? 'Sale' : type;
+      if (p.type !== normalizedType) return false;
+    }
+
+    // Sidebar Type filter
+    if (selectedTypes.length > 0 && !selectedTypes.includes(p.propertyType.split(' ')[0])) return false;
+
+    // Sidebar Country filter
+    if (selectedCountries.length > 0 && !selectedCountries.includes(p.country)) return false;
+
+    // Budget
+    if (p.price < minBudget || p.price > maxBudget) return false;
+
+    // Rooms
+    if (rooms !== 'Any') {
+      const rNum = parseInt(rooms);
+      if (rooms.includes('+')) {
+        if (p.rooms < rNum) return false;
+      } else {
+        if (p.rooms !== rNum) return false;
+      }
+    }
+
+    return true;
+  });
+
+  renderProperties(filtered);
+}
+
+document.getElementById('main-search-btn')?.addEventListener('click', updateFilters);
+
 // Room buttons
 function toggleRoom(el) {
-  const filterRoot = el.closest('.sidebar-card');
-  if (!filterRoot) return;
-  filterRoot.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
+  el.parentElement.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
+  updateFilters();
 }
 
 // Amenities
 function toggleAmenity(el) {
-  const filterRoot = el.closest('.sidebar-card');
-  if (!filterRoot) return;
   el.classList.toggle('active');
+  updateFilters();
 }
 
 // Range slider
@@ -1566,53 +1396,8 @@ function updateRange(whichHandle) {
   updateRangeFill(minVal, maxVal);
   syncBudgetInputsFromRange(minVal, maxVal);
   syncBudgetValues();
+  updateFilters();
 }
-
-// Sort
-function sortListings(sel) {
-  // UI feedback only
-  const grid = document.getElementById('listings-grid');
-  const cards = [...grid.querySelectorAll('.lc-card')];
-  cards.forEach(c => { c.style.opacity = '0'; c.style.transition = 'opacity 0.2s'; });
-  setTimeout(() => { cards.forEach(c => { c.style.opacity = '1'; }); }, 250);
-}
-
-// Pagination
-function setPage(el) {
-  document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
-  if (!isNaN(el.textContent)) el.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Reset
-function resetFilters() {
-  const filterRoot = document.querySelector('.sidebar-card');
-  if (!filterRoot) return;
-  filterRoot.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-  const firstType = filterRoot.querySelector('.type-btn');
-  if (firstType) firstType.classList.add('active');
-  filterRoot.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
-  const firstRoom = filterRoot.querySelector('.room-btn');
-  if (firstRoom) firstRoom.classList.add('active');
-  filterRoot.querySelectorAll('.amenity-chip').forEach(b => b.classList.remove('active'));
-  filterRoot.querySelectorAll('.check-item input').forEach(i => { i.checked = false; });
-  const minRange = document.getElementById('budget-min-range');
-  const maxRange = document.getElementById('budget-max-range');
-  if (minRange && maxRange) {
-    minRange.value = '0';
-    maxRange.value = '10000';
-    updateRangeFill(0, 10000);
-  }
-  const inputs = filterRoot.querySelectorAll('.price-input');
-  if (inputs.length >= 2) {
-    inputs[0].value = '0';
-    inputs[1].value = '10,000';
-  }
-  syncBudgetValues();
-}
-
-// Filter stub
-function updateFilters() {}
 
 function syncBudgetValues() {
   const filterRoot = document.querySelector('.sidebar-card');
@@ -1668,8 +1453,14 @@ function initSearchDropdowns() {
     items.forEach(item => {
       item.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (search) search.value = item.textContent.trim();
-        if (trigger) trigger.textContent = item.textContent.trim();
+        if (search) {
+          search.value = item.textContent.trim();
+          updateFilters();
+        }
+        if (trigger) {
+          trigger.textContent = item.textContent.trim();
+          updateFilters();
+        }
         dd.classList.remove('open');
       });
     });
@@ -1689,53 +1480,19 @@ function goToListingDetailFromKey(e) {
   }
 }
 
-document.querySelectorAll('#listings-grid .lc-card').forEach(card => {
-  card.setAttribute('role', 'link');
-  card.setAttribute('tabindex', '0');
-  card.addEventListener('click', goToListingDetail);
-  card.addEventListener('keydown', goToListingDetailFromKey);
-});
-
-document.querySelectorAll('.contact-btn').forEach(btn => {
-  btn.addEventListener('click', e => e.stopPropagation());
-});
-
-document.querySelectorAll('.sidebar-card .price-input').forEach(input => {
-  input.addEventListener('input', () => {
-    const filterRoot = document.querySelector('.sidebar-card');
-    if (!filterRoot) return;
-    const inputs = filterRoot.querySelectorAll('.price-input');
-    if (inputs.length < 2) return;
-
-    let minVal = parseBudgetNumber(inputs[0].value);
-    let maxVal = parseBudgetNumber(inputs[1].value);
-    if (minVal > maxVal) maxVal = minVal;
-
-    const minRange = document.getElementById('budget-min-range');
-    const maxRange = document.getElementById('budget-max-range');
-    if (minRange && maxRange) {
-      minRange.value = String(minVal);
-      maxRange.value = String(maxVal);
-      updateRangeFill(minVal, maxVal);
-    }
-
-    inputs[0].value = formatBudgetNumber(minVal);
-    inputs[1].value = formatBudgetNumber(maxVal);
-    syncBudgetValues();
-  });
-});
-
-updateRangeFill(1000, 8000);
-syncBudgetValues();
-initSearchDropdowns();
-
 function initDatePickers() {
   if (!window.flatpickr) return;
   document.querySelectorAll('[data-datepicker]').forEach((el) => {
     window.flatpickr(el, { dateFormat: 'm/d/Y', allowInput: true, disableMobile: true });
   });
 }
+
+// Initial Load
+loadProperties();
 initDatePickers();
+initSearchDropdowns();
+updateRangeFill(1000, 8000);
+syncBudgetValues();
 
 /* Mobile menu */
 function toggleMobileMenu(btn) {
