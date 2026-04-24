@@ -1,3 +1,136 @@
+<style>
+    /* ===================== FOOTER ===================== */
+    .lc-footer {
+        background: #5659ba;
+        padding: 64px 0 32px;
+        color: #fff;
+    }
+
+    .lc-footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+    }
+
+    .lc-footer-logo {
+        width: fit-content;
+        margin-bottom: 14px;
+    }
+
+    .lc-footer-logo img {
+        width: auto;
+        height: 30px;
+        display: block;
+    }
+
+    .lc-footer-tagline {
+        font-size: 13px;
+        color: #fff;
+        line-height: 1.75;
+        font-weight: 300;
+        max-width: 260px;
+        margin-bottom: 24px;
+    }
+
+    .lc-footer-social {
+        display: flex;
+        gap: 10px;
+    }
+
+    .lc-social-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 14px;
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .lc-social-btn svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .lc-social-btn:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+    }
+
+    .lc-footer-col h2 {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 18px;
+        font-weight: 500;
+    }
+
+    .lc-footer-col ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .lc-footer-col li {
+        margin-bottom: 11px;
+    }
+
+    .lc-footer-col a {
+        font-size: 13px;
+        color: #fff;
+        transition: opacity 0.18s;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
+    .lc-footer-col a:hover {
+        opacity: 0.82;
+    }
+
+    .lc-footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        opacity: 0.9;
+    }
+
+    @media (max-width: 1024px) {
+        .lc-footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .lc-footer-grid {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .lc-footer-bottom {
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+        }
+    }
+</style>
 <!-- FOOTER -->
 <footer class="lc-footer">
     <div class="container">
