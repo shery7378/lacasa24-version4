@@ -25,6 +25,32 @@
       overflow-x: hidden;
     }
 
+    #idx-min::-webkit-slider-thumb,
+    #idx-max::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(86, 89, 186, 0.3);
+      pointer-events: auto;
+    }
+
+    #idx-min::-moz-range-thumb,
+    #idx-max::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(86, 89, 186, 0.3);
+      pointer-events: auto;
+    }
+
     body {
       font-family: 'Outfit', sans-serif;
       background: #ffffff;
@@ -1938,9 +1964,53 @@
               </div>
             </div>
           </div>
-          <div class="lc-sf">
+          <div class="lc-sf" id="idx-budget-sf" style="position:relative; flex:1.4;">
             <div class="lc-sf-label">Budget</div>
-            <input class="lc-sf-control" type="text" aria-label="Budget" value="€ 1,000 – € 10,000" />
+            <div class="lc-sf-value" id="idx-budget-display"
+              style="cursor:pointer; font-size:14px; color:var(--text-mid);">€ 1,000 – € 10,000</div>
+
+            <div id="idx-budget-panel"
+              style="display:none; position:absolute; top:calc(100% + 12px); left:0; min-width:280px; background:#fff; border:1.5px solid var(--border-strong); border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); padding:20px 22px 18px; z-index:1500;">
+              <div
+                style="font-size:10px; text-transform:uppercase; letter-spacing:.14em; color:var(--brand); font-weight:600; margin-bottom:14px;">
+                Monthly Budget</div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                <div
+                  style="background:var(--off-white); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:7px 10px; flex:1;">
+                  <div style="font-size:10px; color:var(--text-muted); margin-bottom:2px;">Min</div>
+                  <div style="font-size:13px; color:var(--text-dark); font-weight:500;" id="idx-min-display">€ 1,000
+                  </div>
+                </div>
+                <div style="padding:0 10px; color:var(--text-muted); font-size:13px;">–</div>
+                <div
+                  style="background:var(--off-white); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:7px 10px; flex:1;">
+                  <div style="font-size:10px; color:var(--text-muted); margin-bottom:2px;">Max</div>
+                  <div style="font-size:13px; color:var(--text-dark); font-weight:500;" id="idx-max-display">€ 10,000
+                  </div>
+                </div>
+              </div>
+
+              <div style="position:relative; height:22px; margin-bottom:8px;">
+                <div
+                  style="position:absolute; top:9px; left:0; right:0; height:4px; background:var(--border); border-radius:2px;">
+                  <div id="idx-fill"
+                    style="position:absolute; top:0; height:100%; background:var(--brand); border-radius:2px;"></div>
+                </div>
+                <input type="range" id="idx-min" min="0" max="15000" step="100" value="1000"
+                  style="-webkit-appearance:none; appearance:none; position:absolute; top:0; left:0; width:100%; height:22px; background:transparent; outline:none; pointer-events:none;" />
+                <input type="range" id="idx-max" min="0" max="15000" step="100" value="10000"
+                  style="-webkit-appearance:none; appearance:none; position:absolute; top:0; left:0; width:100%; height:22px; background:transparent; outline:none; pointer-events:none;" />
+              </div>
+
+              <div
+                style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-bottom:14px;">
+                <span>€ 0</span><span>€ 15,000</span>
+              </div>
+
+              <button onclick="idxApplyBudget()"
+                style="width:100%; background:var(--brand); color:#fff; border:none; border-radius:var(--radius-sm); padding:10px; font-size:13px; font-weight:500; font-family:var(--ff-sans); cursor:pointer;">Apply</button>
+            </div>
           </div>
           <div class="lc-sf" style="border-right:none;">
             <div class="lc-sf-label">Rooms</div>
@@ -2534,6 +2604,48 @@
         document.getElementById('footer-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error loading footer:', error));
+
+    (function () {
+      const sf = document.getElementById('idx-budget-sf');
+      const panel = document.getElementById('idx-budget-panel');
+      const display = document.getElementById('idx-budget-display');
+      const minR = document.getElementById('idx-min');
+      const maxR = document.getElementById('idx-max');
+      const minD = document.getElementById('idx-min-display');
+      const maxD = document.getElementById('idx-max-display');
+      const fill = document.getElementById('idx-fill');
+
+      function fmt(v) { return '€ ' + Number(v).toLocaleString(); }
+
+      function update() {
+        let lo = parseInt(minR.value);
+        let hi = parseInt(maxR.value);
+        if (lo > hi) { lo = hi; minR.value = lo; }
+        const total = parseInt(minR.max);
+        fill.style.left = (lo / total * 100) + '%';
+        fill.style.width = ((hi - lo) / total * 100) + '%';
+        minD.textContent = fmt(lo);
+        maxD.textContent = fmt(hi);
+      }
+
+      minR.addEventListener('input', update);
+      maxR.addEventListener('input', update);
+      update();
+
+      display.addEventListener('click', function (e) {
+        e.stopPropagation();
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!sf.contains(e.target)) panel.style.display = 'none';
+      });
+
+      window.idxApplyBudget = function () {
+        display.textContent = fmt(parseInt(minR.value)) + ' – ' + fmt(parseInt(maxR.value));
+        panel.style.display = 'none';
+      };
+    })();
   </script>
 </body>
 
