@@ -213,17 +213,129 @@ select.lc-sf-control { cursor: pointer; }
 .lc-sf-control.lc-date { cursor: pointer; }
 
 /* ===================== DATEPICKER (FLATPICKR) ===================== */
-.flatpickr-calendar{border:1px solid rgba(86,89,186,.18);border-radius:14px;box-shadow:0 22px 70px rgba(26,26,46,.2);overflow:visible;font-family:'Outfit',sans-serif}
-.flatpickr-months{background:rgba(86,89,186,.09);padding:8px 10px}
-.flatpickr-months .flatpickr-month,.flatpickr-current-month .flatpickr-monthDropdown-months,.flatpickr-current-month input.cur-year{color:#1a1a2e;font-weight:600}
-.flatpickr-weekdays{background:rgba(86,89,186,.05)}
-.flatpickr-weekday{color:rgba(26,26,46,.6);font-weight:600;font-size:12px}
-.flatpickr-innerContainer{padding:0}
-.flatpickr-day{border-radius:10px}
-.flatpickr-day:hover{background:rgba(86,89,186,.12);border-color:transparent}
-.flatpickr-day.today{border-color:rgba(86,89,186,.55)}
-.flatpickr-day.selected,.flatpickr-day.startRange,.flatpickr-day.endRange,.flatpickr-day.selected:hover,.flatpickr-day.startRange:hover,.flatpickr-day.endRange:hover{background:var(--brand);border-color:var(--brand);color:#fff}
-.flatpickr-day.inRange{background:rgba(86,89,186,.12);border-color:transparent;box-shadow:none}
+.flatpickr-calendar {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 25px 80px rgba(26,26,46,0.22), 0 8px 24px rgba(86,89,186,0.15);
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+  background: #fff;
+  animation: calendarSlideIn 0.25s ease-out;
+}
+@keyframes calendarSlideIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.flatpickr-months {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  padding: 14px 16px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.flatpickr-months::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 8px;
+  padding: 2px 6px;
+  color: #fff;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months option {
+  color: #1a1a2e;
+  background: #fff;
+}
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  fill: #fff;
+  color: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+  background: rgba(255,255,255,0.18);
+}
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg { fill: #fff; }
+.flatpickr-weekdays {
+  background: rgba(86,89,186,0.06);
+  padding: 10px 0 6px;
+}
+.flatpickr-weekday {
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.flatpickr-innerContainer { padding: 4px 8px 12px; }
+.flatpickr-day {
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--text-dark);
+  transition: all 0.18s ease;
+  border: 2px solid transparent;
+  line-height: 38px;
+  height: 38px;
+  max-width: 38px;
+}
+.flatpickr-day:hover {
+  background: var(--brand-pale);
+  border-color: rgba(86,89,186,0.2);
+  color: var(--brand);
+  transform: scale(1.08);
+}
+.flatpickr-day.today {
+  border-color: var(--brand);
+  background: rgba(86,89,186,0.06);
+  font-weight: 600;
+}
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(86,89,186,0.35);
+  transform: scale(1.08);
+}
+.flatpickr-day.inRange {
+  background: rgba(86,89,186,0.1);
+  border-color: transparent;
+  box-shadow: none;
+}
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: var(--text-muted);
+  opacity: 0.35;
+}
+.numInputWrapper:hover { background: rgba(255,255,255,0.1); border-radius: 6px; }
+.numInputWrapper span { border: none; }
+.numInputWrapper span:hover { background: rgba(255,255,255,0.2); }
+.numInputWrapper span.arrowUp::after { border-bottom-color: #fff; }
+.numInputWrapper span.arrowDown::after { border-top-color: #fff; }
 .lc-dropdown { position: relative; z-index: 1; }
 .lc-dd-trigger {
   width: 100%;
@@ -402,7 +514,7 @@ select.lc-sf-control { cursor: pointer; }
   top: 0;
   height: 100%;
   border-radius: 2px;
-  background: var(--brand);
+  background: linear-gradient(90deg, var(--brand), var(--brand-light));
 }
 .range-slider {
   -webkit-appearance: none; appearance: none;
@@ -417,23 +529,53 @@ select.lc-sf-control { cursor: pointer; }
 }
 .range-slider::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
-  width: 18px; height: 18px; border-radius: 50%;
+  width: 20px; height: 20px; border-radius: 50%;
   background: var(--brand); cursor: pointer;
-  border: 3px solid #fff; box-shadow: 0 2px 8px rgba(86,89,186,0.3);
+  border: 3px solid #fff; box-shadow: 0 3px 12px rgba(86,89,186,0.35);
   pointer-events: auto;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 18px rgba(86,89,186,0.45);
 }
 .budget-values {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--text-muted);
+  gap: 8px;
 }
-.budget-values strong {
-  color: var(--text-dark);
+.budget-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 40px;
+  border: 1.5px solid var(--border);
+  background: var(--off-white);
+  font-family: var(--ff-sans);
+  font-size: 12px;
   font-weight: 500;
+  color: var(--text-mid);
+  cursor: default;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.budget-btn .budget-label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  background: var(--brand-pale);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.budget-btn .budget-amount {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 13px;
 }
 
 /* Checkboxes */
@@ -921,7 +1063,11 @@ select.lc-sf-control { cursor: pointer; }
         </div>
 	        <div class="lc-sf">
 	          <div class="lc-sf-label">Budget</div>
-	          <input class="lc-sf-control" type="text" aria-label="Budget" value="€ 1,000 – € 8,000" />
+	          <div style="display:flex;gap:6px;align-items:center;">
+	            <span class="budget-btn"><span class="budget-label">Min</span> <span class="budget-amount" id="topbar-budget-min">€1,000</span></span>
+	            <span style="color:var(--text-muted);font-size:11px;">–</span>
+	            <span class="budget-btn"><span class="budget-label">Max</span> <span class="budget-amount" id="topbar-budget-max">€8,000</span></span>
+	          </div>
 	        </div>
         <div class="lc-sf">
           <div class="lc-sf-label">Rooms</div>
@@ -1011,8 +1157,8 @@ select.lc-sf-control { cursor: pointer; }
             <input id="budget-max-range" type="range" class="range-slider" min="0" max="10000" step="100" value="8000" oninput="updateRange('max')" />
           </div>
           <div class="budget-values">
-            <span>Low: <strong id="budget-low">€ 1,000</strong></span>
-            <span>High: <strong id="budget-high">€ 8,000</strong></span>
+            <span class="budget-btn"><span class="budget-label">Min</span> <span class="budget-amount" id="budget-low">€ 1,000</span></span>
+            <span class="budget-btn"><span class="budget-label">Max</span> <span class="budget-amount" id="budget-high">€ 8,000</span></span>
           </div>
         </div>
 
@@ -1623,8 +1769,14 @@ function syncBudgetValues() {
   const high = inputs[1].value.trim() || '0';
   const lowEl = document.getElementById('budget-low');
   const highEl = document.getElementById('budget-high');
-  if (lowEl) lowEl.textContent = `€ ${low.replace(/^€\s*/, '')}`;
-  if (highEl) highEl.textContent = `€ ${high.replace(/^€\s*/, '')}`;
+  const topMin = document.getElementById('topbar-budget-min');
+  const topMax = document.getElementById('topbar-budget-max');
+  const formattedLow = `€ ${low.replace(/^€\s*/, '')}`;
+  const formattedHigh = `€ ${high.replace(/^€\s*/, '')}`;
+  if (lowEl) lowEl.textContent = formattedLow;
+  if (highEl) highEl.textContent = formattedHigh;
+  if (topMin) topMin.textContent = `€${low.replace(/^€\s*/, '')}`;
+  if (topMax) topMax.textContent = `€${high.replace(/^€\s*/, '')}`;
 }
 
 function initSearchDropdowns() {
